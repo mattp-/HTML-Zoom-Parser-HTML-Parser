@@ -6,8 +6,6 @@ use base qw(HTML::Zoom::SubObject);
 use HTML::TokeParser;
 use HTML::Entities;
 
-use Data::Printer;
-
 sub html_to_events {
     my ($self, $text) = @_;
     my @events;
@@ -32,13 +30,11 @@ sub _toke_parser {
     # HTML::Parser downcases by default
 
     while (my $token = $parser->get_token) {
-#        p $token;
         my $type = shift @$token;
 
         # we essentially break down what we emit to stream handler by type
         # start tag
         if ($type eq 'S') {
-            #p $token;
             my ($tag, $attr, $attrseq, $text) = @$token;
             my $in_place = delete $attr->{'/'}; # val will be '/' if in place
             $attrseq = [ grep { $_ ne '/' } @$attrseq ] if $in_place;
