@@ -12,6 +12,7 @@ sub html_to_events {
     my ($self, $text) = @_;
     my @events;
     _toke_parser($text => sub {
+        #p @_;
         push @events, $_[0];
     });
     return \@events;
@@ -37,9 +38,14 @@ sub _toke_parser {
         # we essentially break down what we emit to stream handler by type
         # start tag
         if ($type eq 'S') {
+            #p $token;
             my ($tag, $attr, $attrseq, $text) = @$token;
             my $in_place = delete $attr->{'/'}; # val will be '/' if in place
             $attrseq = [ grep { $_ ne '/' } @$attrseq ] if $in_place;
+            if (substr($tag, -1) eq '/') {
+                $in_place = '/';
+                chop $tag;
+            }
 
             $handler->({
               type => 'OPEN',

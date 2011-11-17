@@ -15,7 +15,7 @@ END
 
 my $stub = '<div class="waargh"></div>';
 
-my $output = HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } )
+my $output = HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } );
 # el#id
 is( HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } )
    ->from_html('<div id="yo"></div>'.$stub)
