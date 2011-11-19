@@ -1,6 +1,8 @@
 Revision history for Perl extension HTML-Zoom-Parser-HTML-Parser
 
 {{$NEXT}}
+
+0.02      2011-11-19 16:48:24 America/New_York
     - POD tweaks, added See Also
 
 0.01      2011-11-19 16:06:35 America/New_York
