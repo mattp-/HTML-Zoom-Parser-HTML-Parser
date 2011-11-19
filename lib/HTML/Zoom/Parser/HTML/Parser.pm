@@ -1,5 +1,5 @@
 package HTML::Zoom::Parser::HTML::Parser;
-# ABSTRACT: Glue to power HTML::Zoom with HTML Parser
+# ABSTRACT: Glue to power HTML::Zoom with HTML::Parser
 
 use strictures 1;
 use base qw(HTML::Zoom::SubObject);
@@ -18,6 +18,10 @@ use HTML::Entities;
 This module provides a bridge to HMTL::Parser to be used with HTML::Zoom. You may want to use this over Parser::BuiltIn for improved handling of malformed html. There could potentially be a performance boost from HTML::Parser's XS bits, though I've not benchmarked.
 
 Using this Parser over BuiltIn should require no different usage with HTML::Zoom.
+
+=head1 SEE ALSO
+HTML::Zoom
+HTML::Parser
 
 =cut
 

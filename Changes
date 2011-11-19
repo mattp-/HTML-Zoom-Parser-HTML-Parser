@@ -1,6 +1,7 @@
 Revision history for Perl extension HTML-Zoom-Parser-HTML-Parser
 
 {{$NEXT}}
+    - POD tweaks, added See Also
 
 0.01      2011-11-19 16:06:35 America/New_York
-    -Initial release.
+    - Initial release.
