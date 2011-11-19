@@ -1,4 +1,5 @@
 package HTML::Zoom::Parser::HTML::Parser;
+# ABSTRACT: Glue to power HTML::Zoom with HTML Parser
 
 use strictures 1;
 use base qw(HTML::Zoom::SubObject);
@@ -6,11 +7,24 @@ use base qw(HTML::Zoom::SubObject);
 use HTML::TokeParser;
 use HTML::Entities;
 
+=head1 SYNOPSIS
+
+    my $zoom = HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } );
+
+    $zoom->from_html($template); # etc ...
+
+=head1 DESCRIPTION
+
+This module provides a bridge to HMTL::Parser to be used with HTML::Zoom. You may want to use this over Parser::BuiltIn for improved handling of malformed html. There could potentially be a performance boost from HTML::Parser's XS bits, though I've not benchmarked.
+
+Using this Parser over BuiltIn should require no different usage with HTML::Zoom.
+
+=cut
+
 sub html_to_events {
     my ($self, $text) = @_;
     my @events;
     _toke_parser($text => sub {
-        #p @_;
         push @events, $_[0];
     });
     return \@events;
@@ -25,14 +39,13 @@ sub html_to_stream {
 sub _toke_parser {
     my ($text, $handler) = @_;
 
-    # die?? warn??
     my $parser = HTML::TokeParser->new(\$text) or return $!;
     # HTML::Parser downcases by default
 
     while (my $token = $parser->get_token) {
         my $type = shift @$token;
 
-        # we essentially break down what we emit to stream handler by type
+        # we break down what we emit to stream handler by type
         # start tag
         if ($type eq 'S') {
             my ($tag, $attr, $attrseq, $text) = @$token;
@@ -46,11 +59,9 @@ sub _toke_parser {
             $handler->({
               type => 'OPEN',
               name => $tag,
-              # is_in_place_close => $in_place_close, TODO : WHAT TO DO ABOUT THIS?
               attrs => $attr,
               is_in_place_close => $in_place,
               attr_names => $attrseq,
-              # raw_attrs => $attributes || '', TODO : WHAT TO DO ABOUT THIS?
               raw => $text,
             });
 
