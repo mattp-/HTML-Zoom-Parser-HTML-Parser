@@ -1,7 +1,5 @@
 Revision history for Perl extension HTML-Zoom-Parser-HTML-Parser
 
-{{$NEXT}}
-
 1.113390  2011-12-05 05:43:41 Europe/Paris
     - more updated POD, was being incorrectly displayed.
 

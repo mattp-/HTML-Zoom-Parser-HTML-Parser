@@ -1,4 +1,15 @@
+#
+# This file is part of HTML-Zoom-Parser-HTML-Parser
+#
+# This software is copyright (c) 2011 by Matthew Phillips.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
 package HTML::Zoom::Parser::HTML::Parser;
+{
+  $HTML::Zoom::Parser::HTML::Parser::VERSION = '1.113390';
+}
 # ABSTRACT: Glue to power HTML::Zoom with HTML::Parser
 
 use strictures 1;
@@ -7,29 +18,6 @@ use base qw(HTML::Zoom::SubObject);
 use HTML::TokeParser;
 use HTML::Entities;
 
-=head1 SYNOPSIS
-
-    my $zoom = HTML::Zoom->new( {
-        zconfig => {
-            parser => 'HTML::Zoom::Parser::HTML::Parser'
-        }
-    } );
-
-    $zoom->from_html($template); # etc ...
-
-=head1 DESCRIPTION
-
-This module provides a bridge to HMTL::Parser to be used with HTML::Zoom. You may want to use this over Parser::BuiltIn for improved handling of malformed html. There could potentially be a performance boost from HTML::Parser's XS bits, though I've not benchmarked.
-
-Using this Parser over BuiltIn should require no different usage with HTML::Zoom.
-
-=head1 SEE ALSO
-
-=for :list
-* L<HTML::Zoom>
-* L<HTML::Parser>
-
-=cut
 
 sub html_to_events {
     my ($self, $text) = @_;
@@ -136,3 +124,58 @@ sub html_escape { encode_entities($_[1]) }
 sub html_unescape { decode_entities($_[1]) }
 
 1;
+
+__END__
+=pod
+
+=head1 NAME
+
+HTML::Zoom::Parser::HTML::Parser - Glue to power HTML::Zoom with HTML::Parser
+
+=head1 VERSION
+
+version 1.113390
+
+=head1 SYNOPSIS
+
+    my $zoom = HTML::Zoom->new( {
+        zconfig => {
+            parser => 'HTML::Zoom::Parser::HTML::Parser'
+        }
+    } );
+
+    $zoom->from_html($template); # etc ...
+
+=head1 DESCRIPTION
+
+This module provides a bridge to HMTL::Parser to be used with HTML::Zoom. You may want to use this over Parser::BuiltIn for improved handling of malformed html. There could potentially be a performance boost from HTML::Parser's XS bits, though I've not benchmarked.
+
+Using this Parser over BuiltIn should require no different usage with HTML::Zoom.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item *
+
+L<HTML::Zoom>
+
+=item *
+
+L<HTML::Parser>
+
+=back
+
+=head1 AUTHOR
+
+Matthew Phillips <mattp@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Matthew Phillips.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
