@@ -9,7 +9,11 @@ use HTML::Entities;
 
 =head1 SYNOPSIS
 
-    my $zoom = HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } );
+    my $zoom = HTML::Zoom->new( {
+        zconfig => {
+            parser => 'HTML::Zoom::Parser::HTML::Parser'
+        }
+    } );
 
     $zoom->from_html($template); # etc ...
 
@@ -20,8 +24,10 @@ This module provides a bridge to HMTL::Parser to be used with HTML::Zoom. You ma
 Using this Parser over BuiltIn should require no different usage with HTML::Zoom.
 
 =head1 SEE ALSO
-HTML::Zoom
-HTML::Parser
+
+=for :list
+* L<HTML::Zoom>
+* L<HTML::Parser>
 
 =cut
 
