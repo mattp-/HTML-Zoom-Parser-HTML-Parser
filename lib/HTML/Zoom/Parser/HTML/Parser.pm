@@ -19,7 +19,7 @@ use HTML::Entities;
 
 =head1 DESCRIPTION
 
-This module provides a bridge to HMTL::Parser to be used with HTML::Zoom. You may want to use this over Parser::BuiltIn for improved handling of malformed html. There could potentially be a performance boost from HTML::Parser's XS bits, though I've not benchmarked.
+This module provides a bridge to HTML::Parser to be used with HTML::Zoom. You may want to use this over Parser::BuiltIn for improved handling of malformed html. There could potentially be a performance boost from HTML::Parser's XS bits, though I've not benchmarked.
 
 Using this Parser over BuiltIn should require no different usage with HTML::Zoom.
 
