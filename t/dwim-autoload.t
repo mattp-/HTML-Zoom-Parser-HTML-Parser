@@ -101,7 +101,7 @@ like(
 like(
   HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } )
     ->from_html(q[<p class="first">Hi!</p>])
-    ->add_to_attribute('p', {name => 'class', value => 'para'})
+    ->add_to_attribute('p', 'class', 'para')
     ->to_html,
   qr/first para/,
   'Got correct from add_to_attribute'
@@ -128,7 +128,7 @@ like(
 like(
   HTML::Zoom->new( { zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } } )
     ->from_html(q[<p class="first">Hi!</p>])
-    ->set_attribute('p', {name => 'class', value => 'para'})
+    ->set_attribute('p', class => 'para')
     ->to_html,
   qr/class="para"/,
   'Got correct from set_attribute'

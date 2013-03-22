@@ -2,6 +2,7 @@ Revision history for Perl extension HTML-Zoom-Parser-HTML-Parser
 
 {{$NEXT}}
     - fixed typo in pod.
+    - Updates failing tests due to HTML::Zoom 0.009007 depracation notice.
 
 1.113390  2011-12-05 05:43:41 Europe/Paris
     - more updated POD, was being incorrectly displayed.

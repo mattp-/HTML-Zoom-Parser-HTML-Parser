@@ -50,7 +50,7 @@ my ($expect, @ev);
 ($expect = $tmpl) =~ s/class="main"/class="foo"/;
 
 is(
-  run_for { $_->set_attribute({ name => 'class', value => 'foo' }) },
+  run_for { $_->set_attribute(class => 'foo') },
   $expect,
   'set attribute on existing attribute'
 );
@@ -58,7 +58,7 @@ is(
 ($expect = $tmpl) =~ s/class="main"/class="main" foo="bar"/;
 
 is(
-  run_for { $_->set_attribute({ name => 'foo', value => 'bar' }) },
+  run_for { $_->set_attribute(foo => 'bar') },
   $expect,
   'set attribute on non existing attribute'
 );
@@ -66,7 +66,7 @@ is(
 ($expect = $tmpl) =~ s/class="main"/class="main foo"/;
 
 is(
-  run_for { $_->add_to_attribute({ name => 'class', value => 'foo' }) },
+  run_for { $_->add_to_attribute(class => 'foo') },
   $expect,
   'add attribute on existing attribute'
 );
@@ -74,7 +74,7 @@ is(
 ($expect = $tmpl) =~ s/class="main"/class="main" foo="bar"/;
 
 is(
-  run_for { $_->add_to_attribute({ name => 'foo', value => 'bar' }) },
+  run_for { $_->add_to_attribute(foo => 'bar') },
   $expect,
   'add attribute on non existing attribute'
 );
